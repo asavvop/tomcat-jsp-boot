@@ -1,0 +1,21 @@
+package com.example;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class IndexController {
+
+    @GetMapping("/")
+    public String indexView() {
+        return "index";
+    }
+    
+    
+    @GetMapping("/hello")
+    public String servletView(Model model) {
+        model.addAttribute("servletValue", "Hello from JSP!");
+        return "hello";
+    }
+}
