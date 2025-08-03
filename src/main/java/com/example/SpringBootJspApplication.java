@@ -25,6 +25,27 @@ public class SpringBootJspApplication extends SpringBootServletInitializer {
         ServletRegistrationBean<HelloServlet> registration = new ServletRegistrationBean<>(servlet,
                 "/api/helloservlet/*");
         registration.setLoadOnStartup(1);
+
+        return registration;
+    }
+
+       //configure the route of the servlet
+    @Bean
+    public ServletRegistrationBean<DbServletOne> myDbOneServletRegistration(DbServletOne servlet) {
+      
+        ServletRegistrationBean<DbServletOne> registration = new ServletRegistrationBean<>(servlet,
+                "/api/dbservlet1/*");
+        registration.setLoadOnStartup(1);
+
+        return registration;
+    }
+
+       //configure the route of the servlet
+    @Bean
+    public ServletRegistrationBean<DbServletTwo> myDbTwoServletRegistration(DbServletTwo servlet) {
+        ServletRegistrationBean<DbServletTwo> registration = new ServletRegistrationBean<>(servlet,
+                "/api/dbservlet2/*");
+        registration.setLoadOnStartup(1);
         return registration;
     }
 }
