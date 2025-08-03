@@ -2,18 +2,20 @@ package com.example;
 
 import java.io.IOException;
 
+import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import jakarta.annotation.Resource;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 
 @Component
 public class HelloServlet extends HttpServlet {
 
-    @Resource(name = "envConfiguration")
+    @Autowired
     private EnvConfiguration envConfiguration;
 
     
@@ -21,7 +23,7 @@ public class HelloServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 
-        var out = resp.getOutputStream();
+        ServletOutputStream out = resp.getOutputStream();
 
         out.println("This is a Jakarta EE 9 Servlet!");
         out.println();
