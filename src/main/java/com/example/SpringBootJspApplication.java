@@ -16,7 +16,7 @@ public class SpringBootJspApplication extends SpringBootServletInitializer {
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringBootJspApplication.class);
+        SpringApplication.run(SpringBootJspApplication.class, args);
     }
 
     //configure the route of the servlet
@@ -45,6 +45,14 @@ public class SpringBootJspApplication extends SpringBootServletInitializer {
     public ServletRegistrationBean<DbServletTwo> myDbTwoServletRegistration(DbServletTwo servlet) {
         ServletRegistrationBean<DbServletTwo> registration = new ServletRegistrationBean<>(servlet,
                 "/api/dbservlet2/*");
+        registration.setLoadOnStartup(1);
+        return registration;
+    }
+
+     @Bean
+    public ServletRegistrationBean<DbServletThree> myDbThreeServletRegistration(DbServletThree servlet) {
+        ServletRegistrationBean<DbServletThree> registration = new ServletRegistrationBean<>(servlet,
+                "/api/dbservlet3/*");
         registration.setLoadOnStartup(1);
         return registration;
     }
