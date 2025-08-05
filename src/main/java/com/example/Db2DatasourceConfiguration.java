@@ -6,21 +6,19 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 
 @Configuration
-@Profile("default")
-public class PositDatasourceConfiguration {
+public class Db2DatasourceConfiguration {
 
     @Bean
-    @ConfigurationProperties("spring.datasource.posit")
-    public DataSourceProperties positDataSourceProperties() {
+    @ConfigurationProperties("spring.datasource.db2")
+    public DataSourceProperties db2DataSourceProperties() {
         return new DataSourceProperties();
     }
 
     @Bean
-    public DataSource positDataSource() {
-        return positDataSourceProperties()
+    public DataSource db2DataSource() {
+        return db2DataSourceProperties()
                 .initializeDataSourceBuilder()
                 .build();
     }

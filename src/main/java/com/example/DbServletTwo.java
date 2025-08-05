@@ -21,7 +21,7 @@ public class DbServletTwo extends HttpServlet {
 
 	private DataSource ds;
 
-	public DbServletTwo(@Qualifier("positDataSource") DataSource ds) {
+	public DbServletTwo(@Qualifier("db2DataSource") DataSource ds) {
 		super();
 		this.ds = ds;
 	}
@@ -40,10 +40,10 @@ public class DbServletTwo extends HttpServlet {
 		try {
 			con = ds.getConnection();
 			stmt = con.createStatement();
-			rs = stmt.executeQuery("select id, name2, description2 from test2_table");
+			rs = stmt.executeQuery("select DEPTNO, DEPTNAME, MGRNO from department");
 			while (rs.next()) {
-				out.println("From Hikary: Id = " + rs.getInt("id") + ", Name = " + rs.getString("name2") + ", Description = "
-						+ rs.getString("description2"));
+				out.println("From Hikary: Department No = " + rs.getString("DEPTNO") + ", Department Name = " + rs.getString("DEPTNAME") + ", Manager No = "
+						+ rs.getString("MGRNO"));
 			}
 		} catch (SQLException e) {
 			out.println(e.getMessage());
