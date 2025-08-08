@@ -5,3 +5,9 @@ This is a Tomcat 10.1.x sample jsp application that has been "bootified" to show
 ## Deploy to Cloud Foundry
 
 Additionally this app includes a manifest file to help deploy this app in cloud foundry with the correct configuration. 
+
+### Create db cups service
+
+cf cups posit -p "url,username,password"
+
+cf bind-service helloworldboot posit

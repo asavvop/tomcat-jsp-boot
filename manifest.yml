@@ -2,6 +2,8 @@
 applications:
 - name: helloworldboot
   path: target/helloworld-bootify.war
+  service:
+    - name: posit
   buildpacks:
   - https://github.com/cloudfoundry/java-buildpack#v4.77
   env:
